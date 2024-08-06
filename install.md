@@ -9,6 +9,9 @@
 		description = 'İçinde kıyafet olan bir çanta?',
 		weight = 1500,
 		stack = false
+		client = {
+			image = "kiyafet.png",
+		}
 	},
 ```
 4. Scriptin keyfini çıkarın, herhangi bir hata bulursanız veya öneride bulunmak isterseniz discord: discord.gg/gtxdevelopment adresimden destek alabilirsiniz.

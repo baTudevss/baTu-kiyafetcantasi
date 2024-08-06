@@ -1,15 +1,15 @@
 QBCore = exports['qb-core']:GetCoreObject()
 
-QBCore.Functions.CreateUseableItem(Config.ItemAdi, function(source)
+QBCore.Functions.CreateUseableItem(baTu.ItemAdi, function(source)
     local Player = QBCore.Functions.GetPlayer(source)
     TriggerClientEvent('baTu-kiyafetcantasi:PutClotheBagDown', source)
-    Player.Functions.RemoveItem(Config.ItemAdi, 1)
+    Player.Functions.RemoveItem(baTu.ItemAdi, 1)
 end)
 
 RegisterNetEvent('baTu-kiyafetcantasi:addShoppingbag')
 AddEventHandler('baTu-kiyafetcantasi:addShoppingbag', function(object)
     local Player = QBCore.Functions.GetPlayer(source)
-    Player.Functions.AddItem(Config.ItemAdi, 1)
+    Player.Functions.AddItem(baTu.ItemAdi, 1)
 end)
 
 function YollamakeDC(title, message, color)
@@ -23,7 +23,7 @@ function YollamakeDC(title, message, color)
             },
         }
     }
-    PerformHttpRequest(Config.WebhookURL, function(err, text, headers) end, 'POST', json.encode({ username = 'Kıyafet Çantası Log', embeds = embed }), { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest(baTu.WebhookURL, function(err, text, headers) end, 'POST', json.encode({ username = 'Kıyafet Çantası Log', embeds = embed }), { ['Content-Type'] = 'application/json' })
 end
 
 RegisterNetEvent('baTu-kiyafetcantasi:PutClotheBagDown')

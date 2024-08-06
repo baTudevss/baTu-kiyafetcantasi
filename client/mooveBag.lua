@@ -4,11 +4,11 @@ local move = false
 RegisterNetEvent('baTu-kiyafetcantasi:moove')
 AddEventHandler('baTu-kiyafetcantasi:moove', function()
     local playerPed = PlayerPedId()
-    local object = GetClosestObjectOfType(GetEntityCoords(playerPed), 2.5, GetHashKey(Config.propadi))
+    local object = GetClosestObjectOfType(GetEntityCoords(playerPed), 2.5, GetHashKey(baTu.propadi))
     local coords = GetEntityCoords(playerPed)
     coords = coords + vector3(0.0, 0.5, -0.93)
     local heading = GetEntityHeading(playerPed)
-    local propModel = GetHashKey(Config.propadi)
+    local propModel = GetHashKey(baTu.propadi)
 
     RequestModel(propModel)
     while not HasModelLoaded(propModel) do
@@ -17,7 +17,7 @@ AddEventHandler('baTu-kiyafetcantasi:moove', function()
     
     lib.progressBar({
         duration = 1000,
-        label = Config.Dil.YerdenAl,
+        label = baTu.Dil.YerdenAl,
         useWhileDead = false,
         canCancel = false,
         disable = {
@@ -36,7 +36,7 @@ AddEventHandler('baTu-kiyafetcantasi:moove', function()
     end
     DeleteObject(object)
     move = true
-    lib.showTextUI(Config.Yazietiketi)
+    lib.showTextUI(baTu.Yazietiketi)
 
     local prop = CreateObject(propModel, 0.0, 0.0, 0.0, true, true, true)
     AttachEntityToEntity(prop, playerPed, GetPedBoneIndex(playerPed, 57005), 0.3900, -0.0600, -0.0600, -100.00, -180.00, -78.00, true, true, false, true, 1, true)
@@ -51,7 +51,7 @@ AddEventHandler('baTu-kiyafetcantasi:moove', function()
             lib.hideTextUI()
             if lib.progressBar({
                 duration = 1000,
-                label = Config.Dil.yerlestir,
+                label = baTu.Dil.yerlestir,
                 useWhileDead = false,
                 canCancel = true,
                 disable = {
@@ -67,7 +67,7 @@ AddEventHandler('baTu-kiyafetcantasi:moove', function()
                 DetachEntity(prop, true, true)
                 DeleteEntity(prop)
                 lib.hideTextUI()
-                QBCore.Functions.SpawnObject(Config.propadi, coords, function(obj)
+                QBCore.Functions.SpawnObject(baTu.propadi, coords, function(obj)
                     Wait(50)
                     SetEntityHeading(obj, heading)
                 end)

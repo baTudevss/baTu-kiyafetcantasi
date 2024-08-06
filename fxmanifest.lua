@@ -1,6 +1,7 @@
-game 'gta5'
 fx_version 'cerulean'
-lua54 'yes'
+
+game 'gta5'
+
 author 'baTu'
 
 shared_scripts {
@@ -12,12 +13,16 @@ client_scripts {
     'client/*.lua',
     'config.lua',
 }
+
 server_scripts {
     'config.lua',
     'server/main.lua',
 }
+
 depencies {
     'ox_lib',
     'ox_target',
     'ox_inventory'
 }
+
+lua54 'yes'

@@ -2,21 +2,21 @@ QBCore = exports['qb-core']:GetCoreObject()
 
 local bag = false
 
-exports.ox_target:addModel(Config.propadi, {
+exports.ox_target:addModel(baTu.propadi, {
     {
         event = 'baTu-kiyafetcantasi:pickupShoppingbag',
         icon = 'fas fa-hand-holding',
-        label = Config.Dil.AlCanta,
+        label = baTu.Dil.AlCanta,
     },
     {
         event = 'baTu-kiyafetcantasi:CheckForOutfits',
         icon = 'fas fa-shopping-basket',
-        label = Config.Dil.AcCanta,
+        label = baTu.Dil.AcCanta,
     },
     {
         event = 'baTu-kiyafetcantasi:moove',
         icon = 'fas fa-shopping-basket',
-        label = Config.Dil.tasiyorsunbrem,
+        label = baTu.Dil.tasiyorsunbrem,
     }
 })
 
@@ -28,7 +28,7 @@ AddEventHandler('baTu-kiyafetcantasi:PutClotheBagDown', function()
 
     if lib.progressBar({
         duration = 1000,
-        label = Config.Dil.yerlestir,
+        label = baTu.Dil.yerlestir,
         useWhileDead = false,
         canCancel = true,
         disable = {
@@ -41,7 +41,7 @@ AddEventHandler('baTu-kiyafetcantasi:PutClotheBagDown', function()
         },
     }) then
         bag = true
-        QBCore.Functions.SpawnObject(Config.propadi, coords, function(obj)
+        QBCore.Functions.SpawnObject(baTu.propadi, coords, function(obj)
             Wait(50)
             SetEntityHeading(obj, heading)
         end)
@@ -53,24 +53,24 @@ AddEventHandler('baTu-kiyafetcantasi:CheckForOutfits', function()
     if not isTimeoutActive then
         isTimeoutActive = true
 
-        SetTimeout(Config.BeklemeSuresi * 60 * 1000, function()
+        SetTimeout(baTu.BeklemeSuresi * 60 * 1000, function()
             isTimeoutActive = false
         end)
         
 
-        if Config.Kiyafetmenusu == 'fivem-appearance' then
+        if baTu.Kiyafetmenusu == 'fivem-appearance' then
             exports['fivem-appearance']:openWardrobe(openWardrobe)
-        elseif Config.Kiyafetmenusu == 'illenium-appearance' then
+        elseif baTu.Kiyafetmenusu == 'illenium-appearance' then
             TriggerEvent('illenium-appearance:client:openOutfitMenu')
         end
     else
-        lib.notify({ title = 'Kıyafet Çantası', description = 'Giysi çantasını bir kez açabilirsiniz '..Config.BeklemeSuresi..' Dakikan Kaldı', type = 'error' })
+        lib.notify({ title = 'Kıyafet Çantası', description = 'Giysi çantasını bir kez açabilirsiniz '..baTu.BeklemeSuresi..' Dakikan Kaldı', type = 'error' })
     end
 end)
 
 RegisterNetEvent('baTu-kiyafetcantasi:pickupShoppingbag')
 AddEventHandler('baTu-kiyafetcantasi:pickupShoppingbag', function()
-    local object = GetClosestObjectOfType(GetEntityCoords(PlayerPedId()), 2.5, GetHashKey(Config.propadi))
+    local object = GetClosestObjectOfType(GetEntityCoords(PlayerPedId()), 2.5, GetHashKey(baTu.propadi))
     if object ~= 0 then
         NetworkRequestControlOfEntity(object)
         while not NetworkHasControlOfEntity(object) do
